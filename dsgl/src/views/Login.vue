@@ -80,7 +80,6 @@ export default {
               password: this.formLabelAlign.pad,
             })
             .then((res) => {
-              console.log(res);
               if (res.meta.msg == "密码错误") {
                 this.$message({
                   message: "密码错误",
@@ -93,7 +92,8 @@ export default {
                   duration: 1000,
                   type: "success",
                   onClose: () => {
-                    sessionStorage.setItem("token", res.token);
+                    console.log(res);
+                    sessionStorage.setItem("token", res.data.token);
                     this.$router.push("/about");
                   },
                 });

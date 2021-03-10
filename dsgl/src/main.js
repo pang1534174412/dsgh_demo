@@ -28,11 +28,11 @@ axios.interceptors.response.use(
 axios.interceptors.request.use(
   function(config) {
     // 在发送请求之前做些什么
-    if (config.url === '/login' || config.url === '/register') {
+    if (config.url === '/login') {
       return config;
   }else{
       let token=sessionStorage.getItem('token');
-      config.headers['token'] = token;
+      config.headers['Authorization'] = token;
   }
     return config;
   },
