@@ -20,6 +20,7 @@
           @close="handleClose"
           background-color="#333744"
           text-color="#fff"
+          active-text-color="#ffd04b"
           :router="true"
           :unique-opened="true"
         >
@@ -33,15 +34,15 @@
               <span>{{ item.authName }}</span>
             </template>
             <el-menu-item-group>
-              <router-link
-                :to="'/about/' + ite.path"
+              <el-menu-item
+                :route="{ path: '/about/' + ite.path }"
                 :index="ite.id + '-6' + ''"
                 v-for="ite in item.children"
                 :key="ite.id"
                 tag="el-menu-item"
-                >
+              >
                 <i class="el-icon-user-solid"> </i>
-                {{ ite.authName }}</router-link
+                {{ ite.authName }}</el-menu-item
               >
             </el-menu-item-group>
           </el-submenu>
@@ -83,7 +84,6 @@ export default {
   },
   created() {
     this.axios.get("/api/menus").then((res) => {
-      console.log(res);
       this.list = res.data;
     });
   },
@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style lang="less">
-.aa{
+.aa {
   height: 100%;
 }
 * {
@@ -102,11 +102,14 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 .home_top {
+  position: fixed;
+  z-index: 100;
   width: 100%;
-  height:8%;
+  height: 60px;
   background: #373d41;
   display: flex;
   justify-content: space-between;
@@ -129,20 +132,22 @@ body {
 }
 .home_center {
   width: 100%;
-  height: 92%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   .home_left {
-    height: 100%;
+    position: fixed;
+    z-index: 99;
+    height: 100vh;
+    margin-top: 60px;
     background: #333744;
-    width: 200px;
-    .el-menu-vertical-demo {
-      width: 99.9999%;
-    }
+    width: 200px; 
   }
   .home_right {
+    box-sizing: border-box;
+    margin-top: 60px;
+    padding-left: 200px;
     flex: 1;
-    background: #eaedf1;
   }
 }
 </style>

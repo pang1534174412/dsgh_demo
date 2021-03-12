@@ -1,9 +1,12 @@
 import axios from "axios";
 
-export default function(aa) {
+export default function(aa, method = "get", params,data) {
   const request = axios.create({
     baseURL: "/api",
     timeout: 1000,
+    method,
+    params,
+    data
   });
 
   // 添加响应拦截器
@@ -27,7 +30,7 @@ export default function(aa) {
       // 在发送请求之前做些什么
       let token = sessionStorage.getItem("token");
       if (token) {
-        config.headers["token"] = token;
+        config.headers["Authorization"] = token;
       }
       return config;
     },
