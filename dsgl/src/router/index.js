@@ -21,6 +21,10 @@ const routes = [
         redirect: "/about/users",
       },
       {
+        path: "home",
+        component: () => import("./../views/Hoime.vue"),
+      },
+      {
         path: "users",
         component: () => import("./../components/user/users.vue"),
       },
@@ -55,6 +59,7 @@ const routes = [
       },
     ],
   },
+  
 ];
 
 const router = new VueRouter({

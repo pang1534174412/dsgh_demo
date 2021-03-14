@@ -2,13 +2,21 @@
   <div class="px_quan">
     <!-- 面包屑导航区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/about/home' }"
+        >首页</el-breadcrumb-item
+      >
       <el-breadcrumb-item>商品管理</el-breadcrumb-item>
       <el-breadcrumb-item>商品列表</el-breadcrumb-item>
     </el-breadcrumb>
 
     <div>
-      <el-input placeholder="请输入内容" v-model="input" clearable> </el-input>
+      <el-input
+        placeholder="请输入内容"
+        v-model="input"
+        clearable
+        @change="inputany"
+      >
+      </el-input>
       <el-button
         type="info"
         plain
@@ -19,11 +27,6 @@
     </div>
     <div>
       <el-table :data="tableData" border height="500">
-        <!-- <el-table-column type="expand">
-          <template slot-scope="props">
-            <el-row v-for="(item1,index) in props.row.children"> </el-row>
-          </template>
-        </el-table-column> -->
         <el-table-column type="index" :index="indexMethod" label="#" fixed>
         </el-table-column>
         <el-table-column prop="goods_name" label="商品名称" width="680">
@@ -83,24 +86,31 @@
         <el-form-item label="介绍" prop="goods_introduce">
           <el-input v-model="form.goods_introduce"></el-input>
         </el-form-item>
-        <el-from-item label="提交图片" prop="pics">
-          <el-upload
-            class="upload-demo"
-            :action="uploadURL"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-remove="beforeRemove"
-            multiple
-            :limit="3"
-            :on-exceed="handleExceed"
-            :file-list="fileList"
+        <el-form-item label="商品分类" prop="goods_cat">
+          <el-cascader
+            expand-trigger="hover"
+            :options="catelist"
+            :props="cateProps"
+            v-model="form.goods_cat"
+            @change="handleChange()"
           >
-            <el-button size="small" type="primary">点击上传</el-button>
-            <div slot="tip" class="el-upload__tip">
-              只能上传jpg/png文件，且不超过500kb
-            </div>
-          </el-upload>
-        </el-from-item>
+          </el-cascader>
+        </el-form-item>
+        <el-upload
+          class="upload-demo"
+          :action="uploadURL"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :before-remove="beforeRemove"
+          :limit="3"
+          :on-exceed="handleExceed"
+          :file-list="fileList"
+        >
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">
+            只能上传jpg/png文件，且不超过500kb
+          </div>
+        </el-upload>
         <el-button @click="active = false">取 消</el-button>
         <el-button type="primary" @click="primose">提交</el-button>
       </el-form>
@@ -110,10 +120,18 @@
 
 <script>
 import aaa from "./../../components/requert/index";
+import _ from "lodash";
 export default {
   props: {},
   data() {
     return {
+      // 商品分类列表
+      catelist: [],
+      cateProps: {
+        label: "cat_name",
+        value: "cat_id",
+        children: "children",
+      },
       active: false,
       // 上传图片的URL地址
       uploadURL: "http://192.168.1.30:8888/api/private/v1/upload",
@@ -130,7 +148,7 @@ export default {
         goods_number: "",
         goods_weight: "",
         goods_introduce: "",
-        pics: "",
+        goods_cat: [],
       },
       total: null,
       rules: {
@@ -146,19 +164,47 @@ export default {
         goods_weight: [
           { required: true, message: "请输入重量", trigger: "blur" },
         ],
+        goods_cat: [
+          { required: true, message: "请选择商品分类", trigger: "blur" },
+        ],
       },
     };
   },
   mounted() {
     this.getinfo();
+    this.getsuoyou();
   },
   methods: {
+    inputany(e) {
+      console.log(e);
+    },
+    getsuoyou() {
+      aaa({
+        url: "/categories",
+      }).then((res) => {
+        console.log(res);
+        this.catelist = res.data;
+      });
+    },
+    handleChange() {
+      console.log(this.form.goods_cat);
+      if (this.form.goods_cat.length !== 3) {
+        this.form.goods_cat = [];
+      }
+    },
     //查询商品
     chaxun() {
-      this.tableData = null;
+      let aabb = [];
       aaa({
         url: `goods/${this.input}`,
-      }).then((res) => {});
+      }).then((res) => {
+        if (res.meta.status == 200) {
+          aabb.push(res.data);
+          this.tableData = aabb;
+        } else {
+          this.$message.error("请输入内容");
+        }
+      });
     },
     //添加商品
     addtian() {
@@ -226,16 +272,9 @@ export default {
       this.form.goods_weight = res.goods_weight;
     },
     primose() {
-      console.log(
-        this.form.goods_name,
-        this.form.goods_price,
-        this.form.goods_number,
-        this.form.goods_weight,
-        this.form.goods_introduce,
-        this.form.pics,
-        this.form.attrs,
-        this.id
-      );
+      const form = _.cloneDeep(this.form);
+      form.goods_cat = form.goods_cat.join(",");
+      console.log(form.goods_cat);
       aaa({
         url: `/goods/${this.id}`,
         method: "put",
@@ -246,6 +285,7 @@ export default {
           goods_weight: this.form.goods_weight,
           goods_introduce: this.form.goods_introduce,
           pics: this.form.pics,
+          goods_cat: form.goods_cat,
         },
       }).then((res) => {
         console.log(res);
