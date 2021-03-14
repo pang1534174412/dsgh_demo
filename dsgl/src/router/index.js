@@ -37,6 +37,11 @@ const routes = [
         component: () => import("./../components/commodity/goods.vue"),
       },
       {
+        path: "add",
+        component: () => import("./../components/commodity/Add.vue"),
+      },
+
+      {
         path: "params",
         component: () => import("./../components/commodity/params.vue"),
       },
@@ -48,7 +53,6 @@ const routes = [
         path: "reports",
         component: () => import("./../components/reports/reports.vue"),
       },
-      
     ],
   },
 ];
