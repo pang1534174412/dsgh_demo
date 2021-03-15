@@ -1,11 +1,12 @@
 <template>
     <div>
-<h1>goods</h1>
+        静态
     </div>
 </template>
 
 <script>
 export default {
+name:'',
     props: {
 
     },

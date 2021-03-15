@@ -8,6 +8,8 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
+// import  '../public/js/city_data2017_element.js'//城市选择
+
 
 // 添加响应拦截器
 axios.interceptors.response.use(

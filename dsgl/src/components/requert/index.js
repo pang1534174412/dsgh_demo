@@ -1,9 +1,11 @@
 import axios from "axios";
 
-export default function(aa) {
+export default function(aa,data,method) {
   const request = axios.create({
     baseURL: "/api",
     timeout: 1000,
+    data,
+    method
   });
 
   // 添加响应拦截器

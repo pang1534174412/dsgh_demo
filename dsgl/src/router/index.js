@@ -33,11 +33,26 @@ const routes = [
    },
    {
     path:"params",
-    component:()=>import("./../components/commodity/params.vue")
+    component:()=>import("./../components/commodity/params.vue"),
+    children:[
+      {
+        path:"dynamic",/**动态参数 */
+        component:()=>import("./../components/commodity/sorting/dynamic.vue"),
+      },
+      {
+        path:"static",/**静态参数 */
+        component:()=>import("./../components/commodity/sorting/static.vue"),
+      },
+     
+    ]
    },
    {
     path:"categories",
     component:()=>import("./../components/commodity/categories.vue")
+   },
+   {
+    path:"orders",/**订单管理 */
+    component:()=>import("./../components/order")
    },
  ]
     
