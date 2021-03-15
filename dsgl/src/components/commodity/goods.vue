@@ -284,11 +284,12 @@ export default {
           goods_number: this.form.goods_number,
           goods_weight: this.form.goods_weight,
           goods_introduce: this.form.goods_introduce,
-          pics: this.form.pics,
           goods_cat: form.goods_cat,
         },
       }).then((res) => {
         console.log(res);
+        this.active = false;
+        this.getinfo();
       });
     },
     handleRemove(file, fileList) {

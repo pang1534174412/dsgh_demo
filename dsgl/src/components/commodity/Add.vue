@@ -33,7 +33,6 @@
         <el-tabs
           v-model="activeIndex"
           :tab-position="tabPosition"
-          style="height: 500px"
           :before-leave="beforeTabLeave"
           @tab-click="tabClicked"
         >
