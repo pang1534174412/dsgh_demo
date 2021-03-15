@@ -26,9 +26,6 @@
       <el-button type="primary" @click="addtian">添加商品</el-button>
     </div>
     <div>
-<<<<<<< HEAD
-<h1>goods</h1>
-=======
       <el-table :data="tableData" border height="500">
         <el-table-column type="index" :index="indexMethod" label="#" fixed>
         </el-table-column>
@@ -63,11 +60,9 @@
         :total="total"
       >
       </el-pagination>
->>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
     </div>
     <div>
       <el-form
-        :label-position="labelPosition"
         :model="form"
         :rules="rules"
         label-width="100px"

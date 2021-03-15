@@ -8,11 +8,9 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
-<<<<<<< HEAD
-// import  '../public/js/city_data2017_element.js'//城市选择
+import  '../public/js/city_data2017_element.js'//城市选择
 
 
-=======
 //富文本编辑器
 import quillEditor from "vue-quill-editor";
 // 将富文本编辑器，注册为全局可用的组件
@@ -20,7 +18,6 @@ Vue.use(quillEditor);
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
->>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
 // 添加响应拦截器
 axios.interceptors.response.use(
   function(response) {

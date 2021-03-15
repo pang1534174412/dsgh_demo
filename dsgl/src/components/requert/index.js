@@ -1,13 +1,6 @@
 import axios from "axios";
 
-<<<<<<< HEAD
-export default function(aa,data,method) {
-  const request = axios.create({
-    baseURL: "/api",
-    timeout: 1000,
-    data,
-    method
-=======
+
 export default function(aa, method = "get", params,data) {
   const request = axios.create({
     baseURL: "/api",
@@ -15,7 +8,7 @@ export default function(aa, method = "get", params,data) {
     method,
     params,
     data
->>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
+
   });
 
   // 添加响应拦截器
