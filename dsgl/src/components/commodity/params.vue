@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <div class="herad_title">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -249,6 +250,20 @@
         </el-tabs>
       </div>
     </div>
+=======
+    <!-- 面包屑导航区域 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/about/home' }"
+        >首页</el-breadcrumb-item
+      >
+      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
+      <el-breadcrumb-item>分类参数</el-breadcrumb-item>
+    </el-breadcrumb>
+
+    <div>
+      <el-input placeholder="请输入内容" v-model="input" clearable> </el-input>
+    </div>
+>>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
   </div>
 </template>
 
@@ -258,6 +273,7 @@ export default {
   props: {},
   data() {
     return {
+<<<<<<< HEAD
      
       value: [],
       /**级联选择框 */
@@ -481,11 +497,18 @@ export default {
       
     },
   },
+=======
+      input: "",
+    };
+  },
+  methods: {},
+>>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
   components: {},
 };
 </script>
 
 <style scoped lang="less">
+<<<<<<< HEAD
 .herad_title {
   height: 20px;
   display: flex;
@@ -537,4 +560,6 @@ export default {
  }
 
 }
+=======
+>>>>>>> fa773fd6554c7c58b5af56b18717cdff74b46fb9
 </style>
