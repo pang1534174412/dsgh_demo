@@ -3,8 +3,7 @@
     <!-- 面包屑 -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="mianbaoxie">
       <el-breadcrumb-item :to="{ path: '/about/home' }"
-        >首页</el-breadcrumb-item
-      >
+        >首页</el-breadcrumb-item>
       <el-breadcrumb-item>用户管理</el-breadcrumb-item>
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
@@ -22,14 +21,15 @@
           slot="append"
           icon="el-icon-search"
           @click="searchuser"
-        ></el-button>
+        >
+        </el-button>
       </el-input>
-      <el-button type="primary" @click="addDialogVisible = true"
-        >添加用户</el-button
-      >
+      <el-button type="primary" @click="addDialogVisible = true">
+        添加用户
+      </el-button>
 
         <!-- 表格 -->
-        <el-table class="form_table" :data="userlist" border stripe style="width: 100%">
+        <el-table class="form_table" :data="userlist" border stripe       style="width: 100%">
             <el-table-column type="index" prop="date" label="#" width="60"></el-table-column>
             <el-table-column prop="username" label="姓名" width="180"></el-table-column>
             <el-table-column prop="email" label="邮箱"> </el-table-column>
@@ -56,44 +56,10 @@
                     <el-tooltip class="item" effect="dark" content="分配角色" placement="top" :enterable="false">
                         <el-button type="warning" icon="el-icon-setting" size="mini" @click="setRole(scope.row)"></el-button>
                     </el-tooltip>
-                    
-                </template>    
+        
+                 </template>
             </el-table-column>
-        </el-table>
-
-            <!-- 删除按钮 -->
-            <el-tooltip
-              class="item"
-              effect="dark"
-              content="删除"
-              placement="top"
-              :enterable="false"
-            >
-              <el-button
-                type="danger"
-                icon="el-icon-delete"
-                size="mini"
-                @click="removeUserbyId(scope.row.id)"
-              ></el-button>
-            </el-tooltip>
-
-            <!-- 分配角色按钮 -->
-            <el-tooltip
-              class="item"
-              effect="dark"
-              content="分配角色"
-              placement="top"
-              :enterable="false"
-            >
-              <el-button
-                type="warning"
-                icon="el-icon-setting"
-                size="mini"
-              ></el-button>
-            </el-tooltip>
-          </template>
-        </el-table-column>
-      </el-table>
+          </el-table>
 
       <!-- 分页器 -->
       <el-pagination
@@ -106,7 +72,7 @@
         :total="total"
       >
       </el-pagination>
-    </el-card>
+   </el-card>
     <!-- 添加用户 -->
     <el-dialog
       title="添加用户"
@@ -202,7 +168,6 @@
             <el-button type="primary" @click="saveRoleinfo">确 定</el-button>
         </span>
     </el-dialog>
-
 </div>
 </template>
 
@@ -455,15 +420,16 @@ export default {
         setRoleClose(){
             this.selectRoleId = ''
             this.userInfo = {}
+                  
+                //刷新用户列表
+            this.getUserList();
         }
 
        
         
-        
     }
 }
-      //刷新用户列表
-      this.getUserList();
+    
  
 </script>
 

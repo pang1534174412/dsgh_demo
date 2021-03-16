@@ -21,13 +21,10 @@ const routes = [
       //   redirect: "/about/users",
       // },
       {
-<<<<<<< HEAD
         path:"/",
         component:() => import('./../views/Home.vue')
       },
       {
-=======
->>>>>>> a6077bc3779a65e6649eeea5bfcf58ba98500d1d
         path: "users",
         component: () => import("./../components/user/users.vue"),
       },
