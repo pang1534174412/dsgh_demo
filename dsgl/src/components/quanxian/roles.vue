@@ -1,7 +1,7 @@
 <template>
   <div class="px_qun">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/about/home' }"
+      <el-breadcrumb-item :to="{ path: '/about' }"
         >首页</el-breadcrumb-item
       >
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
@@ -372,8 +372,7 @@ export default {
     margin-bottom: 35px;
   }
 }
-el-tag {
-}
+
 .el-table_2_column_6 {
   width: 40px !important;
 }

@@ -3,7 +3,7 @@
     <!-- 面包屑 -->
     <div class="title">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/about/home' }"
+        <el-breadcrumb-item :to="{ path: '/about' }"
           >首页</el-breadcrumb-item
         >
         <el-breadcrumb-item>订单管理</el-breadcrumb-item>

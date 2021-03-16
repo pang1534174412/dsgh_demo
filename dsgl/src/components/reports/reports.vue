@@ -1,7 +1,7 @@
 <template>
   <div class="px_quan">
        <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/about/home' }"
+      <el-breadcrumb-item :to="{ path: '/about' }"
         >首页</el-breadcrumb-item
       >
       <el-breadcrumb-item>数据统计</el-breadcrumb-item>

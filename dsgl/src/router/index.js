@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
-import Home from "../views/Home.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,16 +20,12 @@ const routes = [
       //   redirect: "/about/users",
       // },
       {
-        path:"/",
-        component:() => import('./../views/Home.vue')
-      },
-      {
         path: "users",
         component: () => import("./../components/user/users.vue"),
       },
       
       {
-        path: "home",
+        path: "/",
         component: () => import("./../views/Hoime.vue"),
       },
       {
@@ -83,7 +78,6 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  Home
 });
 
 export default router;
