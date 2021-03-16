@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+  
   </div>
 </template>
 
@@ -10,5 +13,8 @@ body,
 #app {
   width: 100%;
   height: 100%;
+}
+a{
+  text-decoration: none;
 }
 </style>

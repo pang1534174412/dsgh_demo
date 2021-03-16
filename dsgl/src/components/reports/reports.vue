@@ -1,7 +1,7 @@
 <template>
   <div class="px_quan">
        <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/about/reports' }"
+      <el-breadcrumb-item :to="{ path: '/about/home' }"
         >首页</el-breadcrumb-item
       >
       <el-breadcrumb-item>数据统计</el-breadcrumb-item>
@@ -57,6 +57,7 @@ export default {
     aaa({
       url: "reports/type/1",
     }).then((res) => {
+      console.log(res);
       // 4. 准备数据和配置项
       const result = _.merge(res.data, this.options);
       // 5. 展示数据

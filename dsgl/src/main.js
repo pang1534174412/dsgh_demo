@@ -10,7 +10,16 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
+import  '../public/js/city_data2017_element.js'//城市选择
 
+
+//富文本编辑器
+import quillEditor from "vue-quill-editor";
+// 将富文本编辑器，注册为全局可用的组件
+Vue.use(quillEditor);
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 // 添加响应拦截器
 axios.interceptors.response.use(
   function(response) {
@@ -30,12 +39,12 @@ axios.interceptors.response.use(
 axios.interceptors.request.use(
   function(config) {
     // 在发送请求之前做些什么
-    if (config.url === '/login') {
+    if (config.url === "/login") {
       return config;
-  }else{
-      let token=sessionStorage.getItem('token');
-      config.headers['Authorization'] = token;
-  }
+    } else {
+      let token = sessionStorage.getItem("token");
+      config.headers["Authorization"] = token;
+    }
     return config;
   },
   function(error) {

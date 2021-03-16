@@ -1,9 +1,7 @@
 <template>
   <div class="px_quan">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/about/rights' }"
-        >首页</el-breadcrumb-item
-      >
+      <el-breadcrumb-item :to="{ path: '/about/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
       <el-breadcrumb-item>权限列表</el-breadcrumb-item>
     </el-breadcrumb>
